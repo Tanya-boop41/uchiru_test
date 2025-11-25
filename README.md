@@ -1,24 +1,38 @@
-# README
+# uchiru_test — Rails API for internship task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Запуск локально с Docker
 
-Things you may want to cover:
+1. Построить образы и поднять контейнеры:
+```bash
+docker compose up --build
+```
+2. Сервис будет доступен на http://localhost:3000.
 
-* Ruby version
+Примеры запросов
+Создать студента:
 
-* System dependencies
+```bash
+curl -X POST http://localhost:3000/students \
+  -H "Content-Type: application/json" \
+  -d '{"first_name":"Иван","last_name":"Иванов","surname":"Иванович","class_id":1,"school_id":1}'
+  ```
 
-* Configuration
+Ответ 201 + header X-Auth-Token.
+Удалить студента:
+```bash
+curl -X DELETE http://localhost:3000/students/10 \
+  -H "Authorization: Bearer <token_from_X-Auth-Token>"
+```
 
-* Database creation
+Список классов школы:
+```bash
+curl http://localhost:3000/schools/1/classes
+```
 
-* Database initialization
+Список студентов класса:
+```bash
+curl http://localhost:3000/schools/1/classes/1/students
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Примечания
+Для генерации токена используется SHA256(student_id + salt). По умолчанию salt берётся из Rails.application.credentials.auth_salt или переменной окружения AUTH_SALT.
