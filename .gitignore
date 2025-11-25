@@ -1,0 +1,10 @@
+/.bundle
+/vendor/bundle
+/db/*.sqlite3
+/log/*
+/tmp/*
+/node_modules
+/.env
+coverage/
+.byebug_history
+.DS_Store
