@@ -49,4 +49,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem 'active_model_serializers', '~> 0.10.0'
+
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
 end
