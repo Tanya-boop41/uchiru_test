@@ -1,6 +1,6 @@
 class Student < ApplicationRecord
   belongs_to :school
-  belongs_to :classroom, counter_cache: true
+  belongs_to :classroom, foreign_key: :class_id
 
   validates :first_name, :last_name, :surname, :class_id, :school_id, presence: true
 
