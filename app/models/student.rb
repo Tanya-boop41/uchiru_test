@@ -1,6 +1,6 @@
 class Student < ApplicationRecord
   belongs_to :school
-  belongs_to :classroom
+  belongs_to :classroom, counter_cache: true
 
   def as_openapi_json
     {

@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   def create
+    #TODO: вынести в private метод?
     permitted = params.permit(:first_name, :last_name, :surname, :class_id, :school_id)
     required = %i[first_name last_name surname class_id school_id]
     missing = required.select { |k| permitted[k].blank? }
@@ -19,9 +20,10 @@ class StudentsController < ApplicationController
     classroom.increment!(:students_count)
 
     token = AuthTokenService.generate(student.id)
-
     response.set_header('X-Auth-Token', token)
+    
     render json: student.as_openapi_json, status: :created
+  
   rescue ActiveRecord::RecordInvalid => e
     render json: { error: e.record.errors.full_messages }, status: :unprocessable_entity
   end

@@ -1,7 +1,7 @@
 FROM ruby:3.2
 
 RUN apt-get update -qq \
-	&& apt-get install -y build-essential libpq-dev
+	&& apt-get install -y build-essential libpq-dev postgresql-client
 
 WORKDIR /app
 
