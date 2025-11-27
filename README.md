@@ -14,7 +14,15 @@ docker compose up --build
 ```bash
 curl -X POST http://localhost:3000/students \
   -H "Content-Type: application/json" \
-  -d '{"first_name":"Иван","last_name":"Иванов","surname":"Иванович","class_id":1,"school_id":1}'
+  -d '{
+    "student": {
+      "first_name": "Пётр",
+      "last_name": "Иванович",
+      "surname": "Петров",
+      "class_id": 1,
+      "school_id": 1
+    }
+  }'
   ```
 
 Ответ 201 + header X-Auth-Token.
