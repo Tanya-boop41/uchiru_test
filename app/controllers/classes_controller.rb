@@ -1,18 +1,10 @@
 class ClassesController < ApplicationController
   def index
     school = School.find_by(id: params[:school_id])
-    return render json: { data: [] }, status: :ok unless school
+    return render_success(data: {}, status: :no_content) unless school
 
-    classes = school.classrooms
-    data = classes.map do |c|
-      {
-        id: c.id,
-        number: c.number,
-        letter: c.letter,
-        students_count: c.students_count
-      }
-    end
-
-    render json: { data: data }, status: :ok
+    data = school.classrooms
+    puts data.first
+    render_success(data:, status: :ok, serializer: ClassesSerializer)
   end
 end

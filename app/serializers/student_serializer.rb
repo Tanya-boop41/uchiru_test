@@ -1,12 +1,15 @@
-class StudentSerializer < ActiveModel::Serializer
-  attributes :first_name, :last_name, :surname, :class_id, :school_id
-  attribute :id, if: :show_id?
+class StudentSerializer
+  include JSONAPI::Serializer
 
-  def class_id
+  attributes :id, :first_name, :last_name, :surname, :school_id
+
+  attribute :class_id do |object|
     object.classroom_id
   end
 
-  def show_id?
-    instance_options[:show_id] == true
+  attribute :token, if: Proc.new { |user, params|
+      params && params[:token].present?
+    } do |_user, params|
+    params[:token]
   end
 end
