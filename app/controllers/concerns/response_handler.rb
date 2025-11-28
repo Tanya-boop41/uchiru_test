@@ -11,7 +11,7 @@ module ResponseHandler
   if serializer
     serialized_data = serializer.new(data, params:).serializable_hash[:data]
 
-    serialized_attributes = 
+    serialized_attributes =
       if serialized_data.is_a?(Array)
         serialized_data.map { |item| item[:attributes] }
       else
