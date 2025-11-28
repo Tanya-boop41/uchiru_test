@@ -4,6 +4,6 @@ class ClassesSerializer
   attributes :id, :number, :letter
 
   attributes :students_count do |object|
-    object.students.count
+    object.students.size
   end
 end
