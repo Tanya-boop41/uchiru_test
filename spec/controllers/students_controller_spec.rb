@@ -60,10 +60,10 @@ RSpec.describe StudentsController, type: :controller do
     let(:school) { create(:school) }
     let(:classroom) { create(:classroom, school: school) }
     let!(:student) { create(:student, school: school, classroom: classroom) }
+    let(:token) { JsonWebToken.encode(student_id: student.id) }
 
     before do
-      # Обходим авторизацию
-      allow(controller).to receive(:authorize_request).and_return(true)
+      request.headers["Authorization"] = "Bearer #{token}"
     end
 
     it "deletes the student and returns no_content" do
