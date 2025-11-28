@@ -32,4 +32,3 @@ RSpec.describe ClassStudentsController, type: :controller do
     end
   end
 end
-

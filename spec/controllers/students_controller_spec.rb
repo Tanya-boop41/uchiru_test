@@ -42,7 +42,7 @@ RSpec.describe StudentsController, type: :controller do
       it "raises ValidationError and returns error" do
         invalid_params = {
           student: {
-            first_name: "", 
+            first_name: "",
             last_name: "Doe",
             surname: "Smith",
             school_id: school.id,
@@ -53,7 +53,6 @@ RSpec.describe StudentsController, type: :controller do
         expect {
           post :create, params: invalid_params
         }.to raise_error(AppError::ValidationError)
-
       end
     end
   end

@@ -1,8 +1,8 @@
 class StudentsController < ApplicationController
   include AuthorizeRequest
 
-  skip_before_action :authorize_request, only: [:create]
-  before_action :set_student, only: [:destroy]
+  skip_before_action :authorize_request, only: [ :create ]
+  before_action :set_student, only: [ :destroy ]
 
   def create
     data, token = Students::CreateService.call(student_params:)
