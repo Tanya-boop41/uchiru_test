@@ -1,5 +1,9 @@
 class ClassesSerializer
   include JSONAPI::Serializer
 
-  attributes :id, :number, :letter, :students_count
+  attributes :id, :number, :letter
+
+  attributes :students_count do |object|
+    object.students.count
+  end
 end

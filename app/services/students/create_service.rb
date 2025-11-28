@@ -8,7 +8,7 @@ module Students
       student = Student.new(@student_params)
 
       unless student.save
-        #raise ValidationError.new("Validation failed", details: student.errors.full_messages)
+        raise ValidationError.new("Validation failed", details: student.errors.full_messages)
       end
 
       [ student, JsonWebToken.encode(student_id: student.id) ]
