@@ -18,9 +18,9 @@ module ResponseHandler
         serialized[:attributes]
       end
 
-    render json: { data: }.compact, status: status
+    render json: { data: }.compact, status:
   else
-    render json: data, status: status
+    render json: data, status:
   end
 end
 

@@ -10,7 +10,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    Rails.logger.debug("Destroying student #{@student.id}")
+    Rails.logger.info("Destroying student #{@student.id}")
     @student.destroy
     render_success(data: {}, status: :no_content)
   end
