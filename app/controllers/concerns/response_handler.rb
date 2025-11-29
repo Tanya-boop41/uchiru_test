@@ -7,6 +7,10 @@ module ResponseHandler
     render json: { error: "Not found" }, status: :not_found
   end
 
+  def render_bad_request(message = "Bad request")
+    render json: { error: message }, status: :bad_request
+  end
+
   def render_success(data:, status: :ok, serializer: nil, params: {})
   if serializer
     serialized = serializer.new(data, params:).serializable_hash[:data]

@@ -11,9 +11,7 @@ class StudentsController < ApplicationController
   def destroy
     student = Student.find(params[:user_id])
 
-    if student.id != @student.id
-      return render_bad_request("Некорректный id студента")
-    end
+    return render_bad_request if student.id != @student.id
 
     student.destroy
     render_success(data: {}, status: :no_content)
