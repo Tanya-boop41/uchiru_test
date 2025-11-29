@@ -12,7 +12,7 @@ services:
 
   web:
     build: .
-    command: bash -lc "bundle exec rails db:create db:migrate && bundle exec rails server -b 0.0.0.0 -p 3000"
+    command: bash -lc "bundle exec rails server -b 0.0.0.0 -p 3000"
     volumes:
       - .:/app
       - bundle_cache:/usr/local/bundle
