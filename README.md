@@ -46,7 +46,7 @@ curl -X POST http://localhost:3000/students \
 
 ### Удалить студента:
 ```bash
-curl -X DELETE http://localhost:3000/students/10 \
+curl -X DELETE http://localhost:3000/students/1 \
   -H "Authorization: Bearer <token_from_X-Auth-Token>"
 ```
 
