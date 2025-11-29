@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe StudentsController, type: :controller do
   describe "POST #create" do
     let(:school) { create(:school) }
-    let(:classroom) { create(:classroom, school: school) }
+    let(:classroom) { create(:classroom, school:) }
 
     let(:valid_params) do
       {
@@ -58,8 +58,8 @@ RSpec.describe StudentsController, type: :controller do
   end
   describe "DELETE #destroy" do
     let(:school) { create(:school) }
-    let(:classroom) { create(:classroom, school: school) }
-    let!(:student) { create(:student, school: school, classroom: classroom) }
+    let(:classroom) { create(:classroom, school:) }
+    let!(:student) { create(:student, school:, classroom:) }
     let(:token) { JsonWebToken.encode(student_id: student.id) }
 
     before do

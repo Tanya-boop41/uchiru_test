@@ -6,8 +6,8 @@ RSpec.describe ClassesController, type: :controller do
 
     context "when classes exist" do
       let!(:classrooms) do
-        create_list(:classroom, 2, school: school).each do |classroom|
-          create_list(:student, 3, classroom: classroom, school: school)
+        create_list(:classroom, 2, school:).each do |classroom|
+          create_list(:student, 3, classroom:, school:)
         end
       end
 

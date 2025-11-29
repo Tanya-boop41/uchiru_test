@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe Students::CreateService do
   describe ".call" do
     let(:school) { create(:school) }
-    let(:classroom) { create(:classroom, school: school) }
+    let(:classroom) { create(:classroom, school:) }
     let(:valid_params) do
       {
         first_name: "John",

@@ -3,10 +3,10 @@ require "rails_helper"
 RSpec.describe ClassStudentsController, type: :controller do
   describe "GET #index" do
     let(:school) { create(:school) }
-    let(:classroom) { create(:classroom, school: school) }
+    let(:classroom) { create(:classroom, school:) }
 
     context "when students exist" do
-      let!(:students) { create_list(:student, 3, classroom: classroom, school: school) }
+      let!(:students) { create_list(:student, 3, classroom:, school:) }
 
       it "returns success with serialized students" do
         get :index, params: { class_id: classroom.id, school_id: school.id }
